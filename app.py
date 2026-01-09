@@ -43,11 +43,14 @@ elif menu == "Dashboard":
 
 
 elif menu == "Évaluation":
-    st.markdown(
-        "👉 Remplir le formulaire d’évaluation 
-        [https://ee.kobotoolbox.org/x/jfxd3Sgy]
-        [https://forms.gle/QU7EXeRpFEJwHAhD8]"
-    )
+    st.markdown("""
+👉 Remplir le formulaire d’évaluation :
+
+- [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy)
+- [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8)
+""")
+)
+
 
 
 
