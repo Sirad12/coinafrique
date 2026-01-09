@@ -7,9 +7,9 @@ from bs4 import BeautifulSoup
 st.set_page_config(page_title="CoinAfrique App", layout="wide")
 st.title("📊 Application CoinAfrique")
 
-menu = st.sidebar.selectbox(
+menu = st.sidebar.selectbox( 
     "Menu",
-    ["Accueil", "Données", "Dashboard", "Évaluation"]
+    ["Accueil", "Scraping", "Téléchargement brut", "Données", "Dashboard", "Évaluation"] 
 )
 
 #Accueil
@@ -72,13 +72,6 @@ elif menu == "Données":
 
 
 
-
-
-
-
-
-
-
 elif menu == "Dashboard":
     df = pd.read_csv("data/coinafrique.csv")
 
@@ -99,6 +92,7 @@ elif menu == "Évaluation":
 - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy)
 - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8)
 """)
+
 
 
 
