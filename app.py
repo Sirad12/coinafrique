@@ -29,7 +29,7 @@ if menu == "Accueil":
 
 
 # Scraping 
-elif menu == "Données":
+elif menu == "Scraping":
     st.subheader("🧹 Scraping des données nettoyées")
 
     urls = { 
@@ -92,6 +92,7 @@ elif menu == "Évaluation":
 - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy)
 - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8)
 """)
+
 
 
 
