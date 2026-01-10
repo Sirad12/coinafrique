@@ -51,7 +51,7 @@ if menu == "Accueil":
         st.markdown("""
         <div style="background-color:#E0F2FE; border-radius:12px; padding:25px; margin-bottom:20px; text-align:center; color:#0F172A;">
             <h3>📥 Visualiser les annonces</h3>
-            <p>Consultez les annonces collectées sur CoinAfrique facilement.</p>
+            <p>Explorez facilement les annonces collectées sur CoinAfrique.</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -302,6 +302,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
