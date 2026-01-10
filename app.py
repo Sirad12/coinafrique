@@ -142,11 +142,10 @@ elif menu == "Dashboard":
 
     # --- Indicateurs clés ---
     st.markdown("### 📌 Indicateurs clés")
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
     col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
-    col2.metric("⚖️ Prix médian", f"{df['prix'].median():,.0f} FCFA")
-    col3.metric("📦 Nombre d'annonces", len(df))
-    col4.metric("📍 Villes uniques", df["adresse"].nunique())
+    col2.metric("📦 Nombre d'annonces", len(df))
+    col3.metric("📍 Villes uniques", df["adresse"].nunique())
 
     # --- Graphique 1 : Histogramme des prix ---
     st.markdown("### 📊 Distribution des prix")
@@ -191,6 +190,7 @@ elif menu == "Évaluation":
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
