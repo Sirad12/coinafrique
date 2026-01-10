@@ -187,7 +187,7 @@ elif menu == "Scraping":
 
 # ================= DONNEES =================
 elif menu == "Téléchargement brut":
-    st.title("📦 Données brutes – Web Scraper")
+    st.title("Données brutes – Web Scraper")
 
     # Introduction
     st.markdown("""
@@ -227,13 +227,8 @@ elif menu == "Téléchargement brut":
         display: block;
     }
     .card h3 {
-        margin-bottom: 8px;
+        margin: 0;
         font-size: 16px;
-    }
-    .card p {
-        margin-top: 0;
-        font-size: 13px;
-        color: #475569;
     }
     </style>
 
@@ -241,25 +236,21 @@ elif menu == "Téléchargement brut":
         <div class="card">
             <a href="https://sn.coinafrique.com/categorie/vetements-homme" target="_blank">
                 <h3>Vêtements homme</h3>
-                
             </a>
         </div>
         <div class="card">
             <a href="https://sn.coinafrique.com/categorie/chaussures-homme" target="_blank">
                 <h3>Chaussures homme</h3>
-                
             </a>
         </div>
         <div class="card">
             <a href="https://sn.coinafrique.com/categorie/vetements-enfants" target="_blank">
                 <h3>Vêtements enfants</h3>
-                
             </a>
         </div>
         <div class="card">
             <a href="https://sn.coinafrique.com/categorie/chaussures-enfants" target="_blank">
                 <h3>Chaussures enfants</h3>
-                
             </a>
         </div>
     </div>
@@ -276,6 +267,7 @@ elif menu == "Téléchargement brut":
             key="download_brut"
         )
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 
