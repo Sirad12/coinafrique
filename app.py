@@ -192,7 +192,7 @@ elif menu == "Évaluation":
     st.markdown("""
     Merci de prendre quelques instants pour nous donner ton avis sur cette application.  
     Ton retour est précieux pour améliorer l'expérience et l'impact du projet CoinAfrique.
-    """)
+    """)<br><br>
 
     # Deux colonnes côte à côte
     col1, col2 = st.columns(2)
@@ -218,4 +218,5 @@ elif menu == "Évaluation":
             </a>
         </div>
         """, unsafe_allow_html=True)
+
 
