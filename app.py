@@ -181,8 +181,10 @@ elif menu == "Dashboard":
 
     # --- Aperçu visuel des annonces ---
     st.markdown("### 🖼️ Aperçu visuel des annonces")
+    col_image = "image" if "image" in df.columns else "image_lien"
+
     for i, row in df.head(6).iterrows():
-        st.image(row["image"], width=150)
+        st.image(row[col_image], width=150)
         st.write(f"**{row['titre']}** — {row['prix']:,.0f} FCFA")
         st.write(f"📍 {row['adresse']}")
         st.markdown("---")
@@ -198,6 +200,7 @@ elif menu == "Évaluation":
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
