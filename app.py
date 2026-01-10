@@ -9,10 +9,10 @@ st.title("📊 Application CoinAfrique")
 
 menu = st.sidebar.selectbox( 
     "Menu",
-    ["Accueil", "Scraping", "Téléchargement brut", "Données", "Dashboard", "Évaluation"] 
+    ["Accueil", "Scraping", "Téléchargement brut", "Dashboard", "Évaluation"] 
 )
 
-#Accueil
+# ---------------- ACCUEIL ----------------
 if menu == "Accueil":
     st.markdown("""
     ## 📌 Projet CoinAfrique – Data Collection & Analyse
@@ -21,10 +21,9 @@ if menu == "Accueil":
     - 📥 de visualiser les données collectées sur CoinAfrique 
     - 🧹 de scraper et nettoyer les données avec BeautifulSoup 
     - 🧾 de télécharger les données brutes via Web Scraper 
-    - 📊 d’analyser les prix des annonces 
+    - 📊 d’analyser les prix des annonces (données nettoyées) 
     - 📝 de recueillir l’avis des utilisateurs via un formulaire KoboToolbox 
     """)
-
 
 
 # ---------------- SCRAPING ----------------
@@ -67,10 +66,10 @@ elif menu == "Scraping":
                         image = c.find("img", class_="ad__card-img")["src"]
 
                         d = {
-                            "type": titre,
+                            "titre": titre,
                             "prix": prix,
                             "adresse": adresse,
-                            "image_lien": image
+                            "image": image
                         }
                         data.append(d)
                     except:
@@ -90,50 +89,70 @@ elif menu == "Scraping":
         )
 
 
-
-
-
-# 3. Téléchargement brut (Web Scraper) 
+# ---------------- TÉLÉCHARGEMENT BRUT ----------------
 elif menu == "Téléchargement brut": 
     st.subheader("📦 Données brutes issues de Web Scraper") 
-    st.markdown(""" Ces données ont été extraites sans nettoyage via l'outil Web Scraper.
-    
-    - [Vêtements homme](https://sn.coinafrique.com/categorie/vetements-homme) 
-    - [Chaussures homme](https://sn.coinafrique.com/categorie/chaussures-homme) 
-    - [Vêtements enfants](https://sn.coinafrique.com/categorie/vetements-enfants) 
-    - [Chaussures enfants](https://sn.coinafrique.com/categorie/chaussures-enfants) """) 
+    st.markdown("""Ces données ont été extraites sans nettoyage via l'outil Web Scraper.""")
+    st.markdown("""
+    - [Vêtements homme](https://sn.coinafrique.com/categorie/vetements-homme)  
+    - [Chaussures homme](https://sn.coinafrique.com/categorie/chaussures-homme)  
+    - [Vêtements enfants](https://sn.coinafrique.com/categorie/vetements-enfants)  
+    - [Chaussures enfants](https://sn.coinafrique.com/categorie/chaussures-enfants)  
+    """) 
     st.markdown("📥 Tu peux aussi télécharger le fichier brut exporté depuis Web Scraper :") 
     with open("data/coinafrique.csv", "rb") as f: 
         st.download_button("Télécharger le fichier brut", f, file_name="coinafrique.csv") 
-        
 
 
-# 4. Données nettoyées 
-elif menu == "Données": 
-    df = pd.read_csv("data/coinafrique.csv") 
-    st.dataframe(df.head()) 
-    st.download_button("📥 Télécharger les données", df.to_csv(index=False).encode("utf-8"), 
-                       file_name="coinafrique.csv", mime="text/csv")
-
-# 5. Dashboard 
+# ---------------- DASHBOARD (NETTOYÉ) ----------------
 elif menu == "Dashboard":
-    df = pd.read_csv("data/coinafrique.csv") 
-    st.subheader("📈 Analyse des prix") 
-    
-    col1, col2 = st.columns(2) 
-    col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA") 
-    col2.metric("📦 Nombre d'annonces", len(df)) 
-    
-    fig = px.histogram(df, x="prix", nbins=20, title="Distribution des prix") 
-    st.plotly_chart(fig) 
-    
+    df = pd.read_csv("data/coinafrique.csv")
 
-# 6. Évaluation 
+    # Nettoyage du prix
+    df["prix"] = (
+        df["prix"]
+        .astype(str)
+        .str.replace("CFA", "")
+        .str.replace(" ", "")
+        .str.strip()
+    )
+    df["prix"] = pd.to_numeric(df["prix"], errors="coerce")
+
+    # Garder uniquement les colonnes utiles
+    colonnes_utiles = [col for col in ["titre", "prix", "adresse", "image"] if col in df.columns]
+    df = df[colonnes_utiles]
+
+    st.subheader("📈 Dashboard des données nettoyées")
+
+    # Aperçu des données
+    st.dataframe(df.head())
+
+    # Téléchargement des données nettoyées
+    st.download_button(
+        "📥 Télécharger les données nettoyées",
+        df.to_csv(index=False).encode("utf-8"),
+        file_name="coinafrique_nettoye.csv",
+        mime="text/csv"
+    )
+
+    # Indicateurs
+    col1, col2 = st.columns(2)
+    col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
+    col2.metric("📦 Nombre d'annonces", len(df))
+
+    # Graphique
+    fig = px.histogram(df, x="prix", nbins=20, title="Distribution des prix")
+    st.plotly_chart(fig)
+
+
+# ---------------- ÉVALUATION ----------------
 elif menu == "Évaluation": 
     st.markdown(""" 👉 Remplir le formulaire d’évaluation : 
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
+
 
 
 
