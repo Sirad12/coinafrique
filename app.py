@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 COLOR_PRIX = "#F4A7B9"     # rose
-COLOR_VILLES = #000080     # bleu marine
+COLOR_VILLES = "#000080"     # bleu marine
 COLOR_MOYEN = "#A8D5BA"     # vert menthe
 
 
@@ -244,6 +244,7 @@ elif menu == "Évaluation":
         <a href="https://ee.kobotoolbox.org/x/jfxd3Sgy" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire KoboToolbox </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
