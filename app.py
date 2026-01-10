@@ -183,7 +183,7 @@ elif menu == "Dashboard":
         color_discrete_sequence=[PRIMARY_COLOR],
         title="Distribution des prix"
     )
-    fig1.update_layout(**PLOTLY_LAYOUT)
+    fig1.update_layout(bargap=0.2)
     fig1.update_traces(marker_line_width=0)
     st.plotly_chart(fig1, use_container_width=True)
 
@@ -239,6 +239,7 @@ elif menu == "Évaluation":
 
         👉 [Accéder au formulaire](https://forms.gle/QU7EXeRpFEJwHAhD8)
         """)
+
 
 
 
