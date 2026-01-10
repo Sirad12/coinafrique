@@ -30,7 +30,7 @@ if menu == "Accueil":
 # ---------------- SCRAPING ----------------
 elif menu == "Scraping":
 
-    st.subheader("🧹 Scraping des annonces")
+    st.title("🧹 Scraping des annonces")
 
     urls = {
         "Vêtements homme": "https://sn.coinafrique.com/categorie/vetements-homme",
@@ -92,7 +92,7 @@ elif menu == "Scraping":
 
 # ---------------- TÉLÉCHARGEMENT BRUT ----------------
 elif menu == "Téléchargement brut": 
-    st.subheader("📦 Données brutes issues de Web Scraper") 
+    st.title("📦 Données brutes issues de Web Scraper") 
     st.markdown("""Ces données ont été extraites sans nettoyage via l'outil Web Scraper.""")
     st.markdown("""
     - [Vêtements homme](https://sn.coinafrique.com/categorie/vetements-homme)  
@@ -174,10 +174,12 @@ elif menu == "Dashboard":
 
 # ---------------- ÉVALUATION ----------------
 elif menu == "Évaluation": 
+    st.title("Évaluation")
     st.markdown(""" 👉 Remplir le formulaire d’évaluation : 
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
