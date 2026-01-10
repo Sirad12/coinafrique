@@ -224,7 +224,14 @@ elif menu == "Évaluation":
     st.title("Évaluation de l'application")
 
     st.markdown("""
-    Merci de prendre quelques instants pour donner votre avis sur cette application.
+            <p style="
+            text-align:center;
+            font-size:16px;
+            color:#475569;
+            margin-bottom:25px;">
+            Vous pouvez choisir librement le formulaire avec lequel vous êtes le plus à l’aise
+            pour partager votre avis.
+        </p>
     """)
 
     col1, col2 = st.columns(2)
@@ -244,6 +251,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google forms </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
