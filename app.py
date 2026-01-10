@@ -224,7 +224,7 @@ elif menu == "Évaluation":
     st.title("Évaluation de l'application")
 
     st.markdown("""
-    Merci de prendre quelques instants pour donner ton avis sur cette application.
+    Merci de prendre quelques instants pour donner votre avis sur cette application.
     """)
 
     col1, col2 = st.columns(2)
@@ -244,6 +244,7 @@ elif menu == "Évaluation":
         <a href="https://ee.kobotoolbox.org/x/jfxd3Sgy" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire KoboToolbox </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
