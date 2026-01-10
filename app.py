@@ -230,15 +230,15 @@ elif menu == "Évaluation":
         st.markdown(""" 
         <div style="border:1px solid #ccc; padding:15px; border-radius:10px; background-color:#f9f9f9"> 
         <h4>📋 Formulaire KoboToolbox</h4> 
-        <p>Ce formulaire est rapide et anonyme. Il permet de recueillir ton ressenti sur l'utilisation de l'app.</p> 
         <a href="https://ee.kobotoolbox.org/x/jfxd3Sgy" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire KoboToolbox </a> 
         </div> """, unsafe_allow_html=True)
 
     with col2:
-        st.markdown("""
-        **Formulaire Google Forms**
-
-        👉 [Accéder au formulaire](https://forms.gle/QU7EXeRpFEJwHAhD8)
-        """)
+        st.markdown(""" 
+        <div style="border:1px solid #ccc; padding:15px; border-radius:10px; background-color:#f9f9f9"> 
+        <h4>📋 Formulaire KoboToolbox</h4> 
+        <a href="https://ee.kobotoolbox.org/x/jfxd3Sgy" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
+          Accéder au formulaire KoboToolbox </a> 
+        </div> """, unsafe_allow_html=True)
 
