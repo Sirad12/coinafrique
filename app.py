@@ -32,7 +32,6 @@ menu = st.sidebar.selectbox(
     ["Accueil", "Scraping", "Téléchargement brut", "Dashboard", "Évaluation"]
 )
 
-# ================= ACCUEIL =================
 if menu == "Accueil":
     st.title("Application CoinAfrique")
 
@@ -40,36 +39,54 @@ if menu == "Accueil":
     <p style="font-size:16px; color:#475569; margin-bottom:30px;">
         Bienvenue sur l'application CoinAfrique ! Explorez, analysez et partagez vos avis facilement.
     </p>
+    """, unsafe_allow_html=True)
 
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    # Première ligne de cartes
+    col1, col2, col3 = st.columns(3)
 
-        <div style="flex: 1 1 220px; background-color: #E0F2FE; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    with col1:
+        st.markdown("""
+        <div style="background-color:#E0F2FE; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
             <h3>📥 Visualiser les annonces</h3>
             <p>Consultez les annonces collectées sur CoinAfrique facilement.</p>
         </div>
+        """, unsafe_allow_html=True)
 
-        <div style="flex: 1 1 220px; background-color: #FEF3C7; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    with col2:
+        st.markdown("""
+        <div style="background-color:#FEF3C7; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
             <h3>🧹 Scraper les données</h3>
             <p>Récupérez automatiquement les annonces via BeautifulSoup.</p>
         </div>
+        """, unsafe_allow_html=True)
 
-        <div style="flex: 1 1 220px; background-color: #DCFCE7; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    with col3:
+        st.markdown("""
+        <div style="background-color:#DCFCE7; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
             <h3>📄 Télécharger les données</h3>
             <p>Exportez les données brutes ou nettoyées en CSV.</p>
         </div>
+        """, unsafe_allow_html=True)
 
-        <div style="flex: 1 1 220px; background-color: #FECACA; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    # Deuxième ligne de cartes
+    col4, col5 = st.columns(2)
+
+    with col4:
+        st.markdown("""
+        <div style="background-color:#FECACA; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
             <h3>📊 Analyser les prix</h3>
             <p>Visualisez la répartition des prix et tendances par ville.</p>
         </div>
+        """, unsafe_allow_html=True)
 
-        <div style="flex: 1 1 220px; background-color: #EDE9FE; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    with col5:
+        st.markdown("""
+        <div style="background-color:#EDE9FE; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
             <h3>📝 Évaluer l'application</h3>
             <p>Partagez votre avis via KoboToolbox ou Google Forms.</p>
         </div>
+        """, unsafe_allow_html=True)
 
-    </div>
-    """, unsafe_allow_html=True)
 
 
     
@@ -281,6 +298,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
