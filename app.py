@@ -211,12 +211,13 @@ elif menu == "Évaluation":
     with col2:
         st.markdown("### 🧾 Formulaire Google Forms")
         st.markdown("""
-        <div style="border:1px solid #ccc; padding:15px; border-radius:10px; background-color:#f1f1f1">
+        <div style="border:1px solid #ccc; padding:15px; border-radius:10px; background-color:#f9f9f9">
             <p>Une autre version du formulaire est disponible via Google Forms. Tu peux choisir celui que tu préfères.</p>
             <a href="https://forms.gle/QU7EXeRpFEJwHAhD8" target="_blank" style="font-size:16px; font-weight:bold; color:#28A745">
             👉 Accéder au formulaire Google Forms
             </a>
         </div>
         """, unsafe_allow_html=True)
+
 
 
