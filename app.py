@@ -219,5 +219,3 @@ elif menu == "Évaluation":
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("---")
-    st.markdown("🙏 Merci pour ta participation ! Ton avis compte vraiment.")
