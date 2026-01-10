@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 st.set_page_config(page_title="CoinAfrique App", layout="wide")
-st.title("📊 Application CoinAfrique")
+
 
 menu = st.sidebar.selectbox( 
     "Menu",
@@ -14,6 +14,7 @@ menu = st.sidebar.selectbox(
 
 # ---------------- ACCUEIL ----------------
 if menu == "Accueil":
+    st.title("📊 Application CoinAfrique")
     st.markdown("""
     ## 📌 Projet CoinAfrique – Data Collection & Analyse
 
@@ -177,6 +178,7 @@ elif menu == "Évaluation":
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
