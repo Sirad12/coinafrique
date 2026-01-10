@@ -54,7 +54,7 @@ if menu == "Accueil":
         </div>
 
         <div style="flex: 1 1 220px; background-color: #DCFCE7; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A;">
-            <h3>🧾 Télécharger les données</h3>
+            <h3>📄 Télécharger les données</h3>
             <p>Exportez les données brutes ou nettoyées en CSV.</p>
         </div>
 
@@ -71,7 +71,6 @@ if menu == "Accueil":
     </div>
     """, unsafe_allow_html=True)
 
-    
     
 
 
@@ -281,6 +280,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
