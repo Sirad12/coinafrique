@@ -194,31 +194,26 @@ elif menu == "Évaluation":
     Ton retour est précieux pour améliorer l'expérience et l'impact du projet CoinAfrique.
     """)
 
-    # Encadré KoboToolbox
-    with st.container():
+    # Deux colonnes côte à côte
+    col1, col2 = st.columns(2)
+
+    with col1:
         st.markdown("### 📋 Formulaire KoboToolbox")
         st.markdown("""
-        Ce formulaire est rapide et anonyme. Il permet de recueillir ton ressenti sur l'utilisation de l'app.
-        """)
-        st.markdown("""
         <div style="border:1px solid #ccc; padding:15px; border-radius:10px; background-color:#f9f9f9">
-            <a href="https://ee.kobotoolbox.org/x/jfxd3Sgy" target="_blank" style="font-size:18px; font-weight:bold; color:#007BFF">
+            <p>Ce formulaire est rapide et anonyme. Il permet de recueillir ton ressenti sur l'utilisation de l'app.</p>
+            <a href="https://ee.kobotoolbox.org/x/jfxd3Sgy" target="_blank" style="font-size:16px; font-weight:bold; color:#007BFF">
             👉 Accéder au formulaire KoboToolbox
             </a>
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("---")
-
-    # Encadré Google Forms
-    with st.container():
+    with col2:
         st.markdown("### 🧾 Formulaire Google Forms")
         st.markdown("""
-        Une autre version du formulaire est disponible via Google Forms. Tu peux choisir celui que tu préfères.
-        """)
-        st.markdown("""
         <div style="border:1px solid #ccc; padding:15px; border-radius:10px; background-color:#f1f1f1">
-            <a href="https://forms.gle/QU7EXeRpFEJwHAhD8" target="_blank" style="font-size:18px; font-weight:bold; color:#28A745">
+            <p>Une autre version du formulaire est disponible via Google Forms. Tu peux choisir celui que tu préfères.</p>
+            <a href="https://forms.gle/QU7EXeRpFEJwHAhD8" target="_blank" style="font-size:16px; font-weight:bold; color:#28A745">
             👉 Accéder au formulaire Google Forms
             </a>
         </div>
@@ -226,22 +221,3 @@ elif menu == "Évaluation":
 
     st.markdown("---")
     st.markdown("🙏 Merci pour ta participation ! Ton avis compte vraiment.")
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
