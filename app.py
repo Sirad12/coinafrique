@@ -150,11 +150,13 @@ elif menu == "Dashboard":
     # --- Graphique 1 : Histogramme des prix ---
     st.markdown("### 📊 Distribution des prix")
     fig1 = px.histogram(
-        df, x="prix", nbins=30,
-        color_discrete_sequence=["#FF7F50"],
-        title="Répartition des prix des annonces"
+    df, x="prix", nbins=30,
+    color_discrete_sequence=["#FF7F50"],
+    title="Répartition des prix des annonces"
     )
+    fig1.update_layout(bargap=0.2)  # 0.2 = 20% d’espace entre les barres
     st.plotly_chart(fig1, use_container_width=True)
+
 
     # --- Graphique 2 : Annonces par ville ---
     st.markdown("### 🗺️ Annonces par ville")
@@ -190,6 +192,7 @@ elif menu == "Évaluation":
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
