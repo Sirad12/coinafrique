@@ -181,6 +181,10 @@ elif menu == "Scraping":
 
 
 
+
+
+
+
 # ================= DONNEES =================
 elif menu == "Téléchargement brut":
     st.title("📦 Données brutes – Web Scraper")
@@ -193,7 +197,7 @@ elif menu == "Téléchargement brut":
     </p>
     """, unsafe_allow_html=True)
 
-    # Cartes avec style inline (sans emojis)
+    # Cartes avec liens
     st.markdown("""
     <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-bottom:20px;">
 
@@ -239,6 +243,7 @@ elif menu == "Téléchargement brut":
             key="download_brut"
         )
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 
@@ -355,6 +360,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
