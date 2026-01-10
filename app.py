@@ -247,10 +247,11 @@ elif menu == "Évaluation":
     with col2:
         st.markdown(""" 
         <div style="border:1px solid #ccc; padding:15px; border-radius:10px; background-color:#F1F5F9; text-align:center"> 
-        <h4>📋 Formulaire Google Forms</h4> 
+        <h4>📋 Formulaire Google </h4> 
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
-          Accéder au formulaire google forms </a> 
+          Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
