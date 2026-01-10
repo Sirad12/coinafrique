@@ -121,7 +121,10 @@ elif menu == "Dashboard":
     )
     df["prix"] = pd.to_numeric(df["prix"], errors="coerce")
 
-    # Garder uniquement les colonnes utiles
+    # Suppression des valeurs aberrantes (ex. > 1 million FCFA)
+    df = df[df["prix"] < 1_000_000]
+
+    # Colonnes utiles
     colonnes_utiles = [col for col in ["titre", "prix", "adresse", "image"] if col in df.columns]
     df = df[colonnes_utiles].dropna()
 
@@ -139,21 +142,22 @@ elif menu == "Dashboard":
 
     # --- Indicateurs clés ---
     st.markdown("### 📌 Indicateurs clés")
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
-    col2.metric("📦 Nombre d'annonces", len(df))
-    col3.metric("📍 Villes uniques", df["adresse"].nunique())
+    col2.metric("⚖️ Prix médian", f"{df['prix'].median():,.0f} FCFA")
+    col3.metric("📦 Nombre d'annonces", len(df))
+    col4.metric("📍 Villes uniques", df["adresse"].nunique())
 
     # --- Graphique 1 : Histogramme des prix ---
     st.markdown("### 📊 Distribution des prix")
     fig1 = px.histogram(
-        df, x="prix", nbins=20,
+        df, x="prix", nbins=30,
         color_discrete_sequence=["#FF7F50"],
         title="Répartition des prix des annonces"
     )
     st.plotly_chart(fig1, use_container_width=True)
 
-    # --- Graphique 2 : Répartition par ville ---
+    # --- Graphique 2 : Annonces par ville ---
     st.markdown("### 🗺️ Annonces par ville")
     if not df.empty and "adresse" in df.columns:
         ville_counts = df["adresse"].value_counts().reset_index()
@@ -165,8 +169,6 @@ elif menu == "Dashboard":
             title="Nombre d'annonces par ville"
         )
         st.plotly_chart(fig2, use_container_width=True)
-    else:
-        st.warning("Aucune donnée disponible pour afficher les annonces par ville.")
 
     # --- Graphique 3 : Prix moyen par ville ---
     st.markdown("### 🧮 Prix moyen par localisation")
@@ -179,17 +181,6 @@ elif menu == "Dashboard":
         )
         st.plotly_chart(fig3, use_container_width=True)
 
-    # --- Aperçu visuel des annonces ---
-    st.markdown("### 🖼️ Aperçu visuel des annonces")
-    col_image = "image" if "image" in df.columns else "image_lien"
-
-    for i, row in df.head(6).iterrows():
-        st.image(row[col_image], width=150)
-        st.write(f"**{row['titre']}** — {row['prix']:,.0f} FCFA")
-        st.write(f"📍 {row['adresse']}")
-        st.markdown("---")
-
-
 
 
 
@@ -200,6 +191,7 @@ elif menu == "Évaluation":
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
