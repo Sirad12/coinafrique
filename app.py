@@ -10,7 +10,10 @@ st.set_page_config(
     layout="wide"
 )
 
-PRIMARY_COLOR = "#1E3A8A"
+COLOR_PRIX = "#FF7F50"      # orange doux
+COLOR_VILLES =  "#A7C7E7"   # bleu ciel
+COLOR_MOYEN = "#A8D5BA"     # vert menthe
+
 
 PLOTLY_LAYOUT = dict(
     plot_bgcolor="rgba(0,0,0,0)",
@@ -180,7 +183,7 @@ elif menu == "Dashboard":
         df,
         x="prix",
         nbins=30,
-        color_discrete_sequence=[PRIMARY_COLOR],
+        color_discrete_sequence=[COLOR_PRIX],
         title="Distribution des prix"
     )
     fig1.update_layout(bargap=0.2)
@@ -195,7 +198,7 @@ elif menu == "Dashboard":
         ville_counts,
         x="Ville",
         y="Nombre",
-        color_discrete_sequence=[PRIMARY_COLOR],
+        color_discrete_sequence=[COLOR_VILLES],
         title="Annonces par ville"
     )
     fig2.update_layout(**PLOTLY_LAYOUT)
@@ -209,7 +212,7 @@ elif menu == "Dashboard":
         prix_ville,
         x="adresse",
         y="prix",
-        color_discrete_sequence=[PRIMARY_COLOR],
+        color_discrete_sequence=[COLOR_MOYEN],
         title="Prix moyen par ville"
     )
     fig3.update_layout(**PLOTLY_LAYOUT)
@@ -241,6 +244,7 @@ elif menu == "Évaluation":
         <a href="https://ee.kobotoolbox.org/x/jfxd3Sgy" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire KoboToolbox </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
