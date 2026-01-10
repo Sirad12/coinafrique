@@ -1,6 +1,13 @@
 [theme]
-primaryColor = "#2E8B57"
+# primaryColor = "#2E8B57"
+# backgroundColor = "#FFFFFF"
+# secondaryBackgroundColor = "#F6F6F6"
+# textColor = "#222222"
+# font = "sans serif"
+
+[theme]
+primaryColor = "#111827"          # noir profond
 backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F6F6F6"
-textColor = "#222222"
+secondaryBackgroundColor = "#F3F4F6"
+textColor = "#1F2937"
 font = "sans serif"
