@@ -36,68 +36,38 @@ menu = st.sidebar.selectbox(
 if menu == "Accueil":
     st.title("Application CoinAfrique")
 
-    
     st.markdown("""
-    <p style="
-        font-size:16px;
-        color:#475569;
-        margin-bottom:30px;
-    ">
+    <p style="font-size:16px; color:#475569; margin-bottom:30px;">
         Bienvenue sur l'application CoinAfrique ! Explorez, analysez et partagez vos avis facilement.
     </p>
-    
-    <style>
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-    }
-    .card {
-        flex: 1 1 220px;
-        border-radius: 12px;
-        padding: 25px;
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-        cursor: pointer;
-        color: #0F172A;
-    }
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
-    }
-    .blue { background-color: #E0F2FE; }
-    .coral { background-color: #FECACA; }
-    .green { background-color: #DCFCE7; }
-    .lavender { background-color: #EDE9FE; }
-    .yellow { background-color: #FEF3C7; }
-    </style>
 
-    <div class="card-container">
-        <div class="card blue">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+
+        <div style="flex: 1 1 220px; background-color: #E0F2FE; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A;">
             <h3>📥 Visualiser les annonces</h3>
             <p>Consultez les annonces collectées sur CoinAfrique facilement.</p>
         </div>
 
-        <div class="card yellow">
+        <div style="flex: 1 1 220px; background-color: #FEF3C7; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A;">
             <h3>🧹 Scraper les données</h3>
             <p>Récupérez automatiquement les annonces via BeautifulSoup.</p>
         </div>
 
-        <div class="card green">
+        <div style="flex: 1 1 220px; background-color: #DCFCE7; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A;">
             <h3>🧾 Télécharger les données</h3>
             <p>Exportez les données brutes ou nettoyées en CSV.</p>
         </div>
 
-        <div class="card coral">
+        <div style="flex: 1 1 220px; background-color: #FECACA; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A;">
             <h3>📊 Analyser les prix</h3>
             <p>Visualisez la répartition des prix et tendances par ville.</p>
         </div>
 
-        <div class="card lavender">
+        <div style="flex: 1 1 220px; background-color: #EDE9FE; border-radius: 12px; padding: 25px; text-align: center; color: #0F172A;">
             <h3>📝 Évaluer l'application</h3>
             <p>Partagez votre avis via KoboToolbox ou Google Forms.</p>
         </div>
+
     </div>
     """, unsafe_allow_html=True)
 
@@ -311,6 +281,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
