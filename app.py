@@ -241,25 +241,25 @@ elif menu == "Téléchargement brut":
         <div class="card">
             <a href="https://sn.coinafrique.com/categorie/vetements-homme" target="_blank">
                 <h3>Vêtements homme</h3>
-                <p>Voir toutes les annonces pour les vêtements hommes</p>
+                
             </a>
         </div>
         <div class="card">
             <a href="https://sn.coinafrique.com/categorie/chaussures-homme" target="_blank">
                 <h3>Chaussures homme</h3>
-                <p>Voir toutes les annonces pour les chaussures hommes</p>
+                
             </a>
         </div>
         <div class="card">
             <a href="https://sn.coinafrique.com/categorie/vetements-enfants" target="_blank">
                 <h3>Vêtements enfants</h3>
-                <p>Voir toutes les annonces pour les vêtements enfants</p>
+                
             </a>
         </div>
         <div class="card">
             <a href="https://sn.coinafrique.com/categorie/chaussures-enfants" target="_blank">
                 <h3>Chaussures enfants</h3>
-                <p>Voir toutes les annonces pour les chaussures enfants</p>
+                
             </a>
         </div>
     </div>
@@ -391,6 +391,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
