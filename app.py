@@ -107,12 +107,10 @@ elif menu == "Téléchargement brut":
 # ---------------- DASHBOARD (NETTOYÉ) ----------------
 elif menu == "Dashboard":
     st.markdown("## 📊 Dashboard des données nettoyées")
-    st.markdown("### 🔍 Aperçu des annonces")
 
     # Chargement et nettoyage
     df = pd.read_csv("data/coinafrique.csv")
 
-    # Nettoyage du prix
     df["prix"] = (
         df["prix"]
         .astype(str)
@@ -122,84 +120,55 @@ elif menu == "Dashboard":
     )
     df["prix"] = pd.to_numeric(df["prix"], errors="coerce")
 
-    # Colonnes utiles
     colonnes_utiles = [col for col in ["titre", "prix", "adresse", "image"] if col in df.columns]
     df = df[colonnes_utiles].dropna()
 
-    # Filtres interactifs
-    st.sidebar.markdown("### 🎚️ Filtres")
-    villes = df["adresse"].unique()
-    ville_selection = st.sidebar.selectbox("📍 Filtrer par localisation", options=["Toutes"] + list(villes))
-    prix_min, prix_max = int(df["prix"].min()), int(df["prix"].max())
-    prix_range = st.sidebar.slider("💰 Filtrer par prix", min_value=prix_min, max_value=prix_max, value=(prix_min, prix_max))
-
-    # Application des filtres
-    df_filtre = df.copy()
-    if ville_selection != "Toutes":
-        df_filtre = df_filtre[df_filtre["adresse"] == ville_selection]
-    df_filtre = df_filtre[(df_filtre["prix"] >= prix_range[0]) & (df_filtre["prix"] <= prix_range[1])]
-
-    # Aperçu des données filtrées
-    st.dataframe(df_filtre.head())
+    # Aperçu rapide
+    st.markdown("### 🔍 Aperçu des annonces")
+    st.dataframe(df.head())
 
     # Téléchargement
     st.download_button(
-        "📥 Télécharger les données filtrées",
-        df_filtre.to_csv(index=False).encode("utf-8"),
-        file_name="coinafrique_dashboard.csv",
+        "📥 Télécharger les données nettoyées",
+        df.to_csv(index=False).encode("utf-8"),
+        file_name="coinafrique_nettoye.csv",
         mime="text/csv"
     )
 
     # Indicateurs
     st.markdown("### 📌 Indicateurs clés")
     col1, col2, col3 = st.columns(3)
-    col1.metric("💰 Prix moyen", f"{df_filtre['prix'].mean():,.0f} FCFA")
-    col2.metric("📦 Nombre d'annonces", len(df_filtre))
-    col3.metric("📍 Localisations uniques", df_filtre["adresse"].nunique())
+    col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
+    col2.metric("📦 Nombre d'annonces", len(df))
+    col3.metric("📍 Villes uniques", df["adresse"].nunique())
 
     # Graphique 1 : Histogramme des prix
     st.markdown("### 📊 Distribution des prix")
-    fig1 = px.histogram(
-        df_filtre,
-        x="prix",
-        nbins=20,
-        color_discrete_sequence=["#FF7F50"],
-        title="Répartition des prix des annonces"
-    )
+    fig1 = px.histogram(df, x="prix", nbins=20, color_discrete_sequence=["#FF7F50"])
     st.plotly_chart(fig1, use_container_width=True)
 
     # Graphique 2 : Répartition par ville
-    st.markdown("### 🗺️ Répartition géographique")
+    st.markdown("### 🗺️ Annonces par ville")
     fig2 = px.bar(
-        df_filtre["adresse"].value_counts().reset_index(),
+        df["adresse"].value_counts().reset_index(),
         x="index",
         y="adresse",
-        labels={"index": "Localisation", "adresse": "Nombre d'annonces"},
-        color_discrete_sequence=["#6A5ACD"],
-        title="Nombre d'annonces par ville"
+        labels={"index": "Ville", "adresse": "Nombre"},
+        color_discrete_sequence=["#6A5ACD"]
     )
     st.plotly_chart(fig2, use_container_width=True)
 
-    # Graphique 3 : Prix moyen par ville
-    st.markdown("### 🧮 Prix moyen par localisation")
-    prix_par_ville = df_filtre.groupby("adresse")["prix"].mean().reset_index()
-    fig3 = px.bar(
-        prix_par_ville,
-        x="adresse",
-        y="prix",
-        labels={"adresse": "Localisation", "prix": "Prix moyen"},
-        color_discrete_sequence=["#2E8B57"],
-        title="Prix moyen par ville"
-    )
-    st.plotly_chart(fig3, use_container_width=True)
-
-    # Affichage des images
-    st.markdown("### 🖼️ Aperçu visuel des annonces")
-    for i, row in df_filtre.head(6).iterrows():
+    # Aperçu visuel
+    st.markdown("### 🖼️ Aperçu visuel")
+    for i, row in df.head(6).iterrows():
         st.image(row["image"], width=150)
         st.write(f"**{row['titre']}** — {row['prix']:,.0f} FCFA")
         st.write(f"📍 {row['adresse']}")
         st.markdown("---")
+
+
+
+
 
 
 # ---------------- ÉVALUATION ----------------
@@ -208,6 +177,7 @@ elif menu == "Évaluation":
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
