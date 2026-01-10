@@ -43,6 +43,10 @@ if menu == "Accueil":
         Bienvenue sur l'application CoinAfrique ! Explorez, analysez et partagez vos avis facilement.
     </p>
     """, unsafe_allow_html=True)
+    st.markdown("""
+    <div style="height:30px;"></div>
+    """, unsafe_allow_html=True)
+
 
     # Première ligne
     col1, col2, col3 = st.columns([1, 1, 1])
@@ -302,6 +306,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
