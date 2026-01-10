@@ -109,26 +109,27 @@ elif menu == "Téléchargement brut":
 elif menu == "Dashboard":
     st.markdown("## 📊 Dashboard des données nettoyées")
 
-    # Chargement et nettoyage
+    # --- Chargement et nettoyage ---
     df = pd.read_csv("data/coinafrique.csv")
 
+    # Nettoyage du prix
     df["prix"] = (
-        df["prix"]
-        .astype(str)
+        df["prix"].astype(str)
         .str.replace("CFA", "")
         .str.replace(" ", "")
         .str.strip()
     )
     df["prix"] = pd.to_numeric(df["prix"], errors="coerce")
 
+    # Garder uniquement les colonnes utiles
     colonnes_utiles = [col for col in ["titre", "prix", "adresse", "image"] if col in df.columns]
     df = df[colonnes_utiles].dropna()
 
-    # Aperçu rapide
+    # --- Aperçu rapide ---
     st.markdown("### 🔍 Aperçu des annonces")
     st.dataframe(df.head())
 
-    # Téléchargement
+    # Bouton de téléchargement
     st.download_button(
         "📥 Télécharger les données nettoyées",
         df.to_csv(index=False).encode("utf-8"),
@@ -136,37 +137,55 @@ elif menu == "Dashboard":
         mime="text/csv"
     )
 
-    # Indicateurs
+    # --- Indicateurs clés ---
     st.markdown("### 📌 Indicateurs clés")
     col1, col2, col3 = st.columns(3)
     col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
     col2.metric("📦 Nombre d'annonces", len(df))
     col3.metric("📍 Villes uniques", df["adresse"].nunique())
 
-    # Graphique 1 : Histogramme des prix
+    # --- Graphique 1 : Histogramme des prix ---
     st.markdown("### 📊 Distribution des prix")
-    fig1 = px.histogram(df, x="prix", nbins=20, color_discrete_sequence=["#FF7F50"])
+    fig1 = px.histogram(
+        df, x="prix", nbins=20,
+        color_discrete_sequence=["#FF7F50"],
+        title="Répartition des prix des annonces"
+    )
     st.plotly_chart(fig1, use_container_width=True)
 
-    # Graphique 2 : Répartition par ville
+    # --- Graphique 2 : Répartition par ville ---
     st.markdown("### 🗺️ Annonces par ville")
-    fig2 = px.bar(
-        df["adresse"].value_counts().reset_index(),
-        x="index",
-        y="adresse",
-        labels={"index": "Ville", "adresse": "Nombre"},
-        color_discrete_sequence=["#6A5ACD"]
-    )
-    st.plotly_chart(fig2, use_container_width=True)
+    if not df.empty and "adresse" in df.columns:
+        ville_counts = df["adresse"].value_counts().reset_index()
+        ville_counts.columns = ["Ville", "Nombre d'annonces"]
 
-    # Aperçu visuel
-    st.markdown("### 🖼️ Aperçu visuel")
+        fig2 = px.bar(
+            ville_counts, x="Ville", y="Nombre d'annonces",
+            color_discrete_sequence=["#6A5ACD"],
+            title="Nombre d'annonces par ville"
+        )
+        st.plotly_chart(fig2, use_container_width=True)
+    else:
+        st.warning("Aucune donnée disponible pour afficher les annonces par ville.")
+
+    # --- Graphique 3 : Prix moyen par ville ---
+    st.markdown("### 🧮 Prix moyen par localisation")
+    if not df.empty and "adresse" in df.columns:
+        prix_par_ville = df.groupby("adresse")["prix"].mean().reset_index()
+        fig3 = px.bar(
+            prix_par_ville, x="adresse", y="prix",
+            color_discrete_sequence=["#2E8B57"],
+            title="Prix moyen par ville"
+        )
+        st.plotly_chart(fig3, use_container_width=True)
+
+    # --- Aperçu visuel des annonces ---
+    st.markdown("### 🖼️ Aperçu visuel des annonces")
     for i, row in df.head(6).iterrows():
         st.image(row["image"], width=150)
         st.write(f"**{row['titre']}** — {row['prix']:,.0f} FCFA")
         st.write(f"📍 {row['adresse']}")
         st.markdown("---")
-
 
 
 
@@ -179,6 +198,7 @@ elif menu == "Évaluation":
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
