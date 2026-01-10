@@ -36,7 +36,7 @@ menu = st.sidebar.selectbox(
 if menu == "Accueil":
     st.title("📊 Application CoinAfrique")
 
-    # Intro centrée
+    # Phrase d'intro centrée
     st.markdown("""
     <p style="
         text-align:center;
@@ -48,7 +48,7 @@ if menu == "Accueil":
     </p>
     """, unsafe_allow_html=True)
 
-    # Cartes modernes avec hover
+    # CSS pour les cartes
     st.markdown("""
     <style>
     .card-container {
@@ -65,6 +65,7 @@ if menu == "Accueil":
         transition: transform 0.3s, box-shadow 0.3s;
         cursor: pointer;
         color: #0F172A;
+        min-width: 200px;
     }
     .card:hover {
         transform: translateY(-5px);
@@ -75,8 +76,13 @@ if menu == "Accueil":
     .green { background-color: #DCFCE7; }
     .lavender { background-color: #EDE9FE; }
     .yellow { background-color: #FEF3C7; }
+    h3 { margin-bottom:10px; }
+    p { margin-top:0; font-size:14px; color:#475569; }
     </style>
+    """, unsafe_allow_html=True)
 
+    # Cartes HTML
+    st.markdown("""
     <div class="card-container">
         <div class="card blue">
             <h3>📥 Visualiser les annonces</h3>
@@ -104,6 +110,7 @@ if menu == "Accueil":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 
 
 # ================= SCRAPING =================
@@ -310,6 +317,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
