@@ -27,42 +27,68 @@ if menu == "Accueil":
 
 
 
-
-# Scraping 
+# ---------------- SCRAPING ----------------
 elif menu == "Scraping":
-    st.subheader("🧹 Scraping des données nettoyées")
 
-    urls = { 
-        "Vêtements homme": "https://sn.coinafrique.com/categorie/vetements-homme", 
+    st.subheader("🧹 Scraping des annonces")
+
+    urls = {
+        "Vêtements homme": "https://sn.coinafrique.com/categorie/vetements-homme",
         "Chaussures homme": "https://sn.coinafrique.com/categorie/chaussures-homme",
-        "Vêtements enfants": "https://sn.coinafrique.com/categorie/vetements-enfants", 
-        "Chaussures enfants": "https://sn.coinafrique.com/categorie/chaussures-enfants" 
+        "Vêtements enfants": "https://sn.coinafrique.com/categorie/vetements-enfants",
+        "Chaussures enfants": "https://sn.coinafrique.com/categorie/chaussures-enfants"
     }
 
-    def scrape_pages(base_url, nb_pages=1):
-        all_data = []
-        for i in range(1, nb_pages+1):
-            url = f"{base_url}?page={i}"
-            response = requests.get(url) 
-            soup = BeautifulSoup(response.text, "html.parser") 
-            annonces = soup.find_all("div", class_="classified") 
-            
-            for a in annonces: 
-                titre = a.find("h2").text if a.find("h2") else "N/A" 
-                prix = a.find("span", class_="price").text if a.find("span", class_="price") else "N/A" 
-                adresse = a.find("span", class_="location").text if a.find("span", class_="location") else "N/A" 
-                image = a.find("img")["src"] if a.find("img") else "N/A" 
-                all_data.append({"type": titre, "prix": prix, "adresse": adresse, "image_lien": image})
-        return pd.DataFrame(all_data)
+    categorie = st.selectbox("Choisir une catégorie", list(urls.keys()))
+    nb_pages = st.number_input("Nombre de pages", min_value=1, max_value=10, value=3)
 
-    
-    choix = st.selectbox("Choisir une catégorie", list(urls.keys())) 
-    nb_pages = st.number_input("Nombre de pages à scraper", min_value=1, max_value=10, value=3)
+    if st.button("Scraper"):
+        df = pd.DataFrame()
 
-    if st.button("Scraper"): 
-        df_scraped = scrape_pages(urls[choix], nb_pages) 
-        st.dataframe(df_scraped) 
-        st.download_button("📥 Télécharger", df_scraped.to_csv(index=False).encode("utf-8"), file_name=f"{choix}.csv", mime="text/csv")
+        with st.spinner("Scraping en cours..."):
+            for page in range(1, nb_pages + 1):
+                url = f"{urls[categorie]}?page={page}"
+                response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
+                soup = BeautifulSoup(response.text, "html.parser")
+
+                containers = soup.find_all("div", class_="col s6 m4 l3")
+                data = []
+
+                for c in containers:
+                    try:
+                        titre = c.find("p", class_="ad__card-description").text.strip()
+                        
+                        prix = c.find("p", class_="ad__card-price").text
+                        prix = prix.replace("CFA", "").replace(" ", "").strip()
+                        prix = int(prix)
+
+                        adresse = c.find("p", class_="ad__card-location").span.text.strip()
+                        
+                        image = c.find("img", class_="ad__card-img")["src"]
+
+                        d = {
+                            "type": titre,
+                            "prix": prix,
+                            "adresse": adresse,
+                            "image_lien": image
+                        }
+                        data.append(d)
+                    except:
+                        pass
+
+                DF = pd.DataFrame(data)
+                df = pd.concat([df, DF], axis=0).reset_index(drop=True)
+
+        st.success("Scraping terminé ✅")
+        st.dataframe(df)
+
+        st.download_button(
+            "📥 Télécharger le CSV",
+            df.to_csv(index=False).encode("utf-8"),
+            file_name="coinafrique_scraped.csv",
+            mime="text/csv"
+        )
+
 
 
 
@@ -108,6 +134,7 @@ elif menu == "Évaluation":
     - [Formulaire KoboToolbox](https://ee.kobotoolbox.org/x/jfxd3Sgy) 
     - [Formulaire Google Forms](https://forms.gle/QU7EXeRpFEJwHAhD8) 
     """)
+
 
 
 
