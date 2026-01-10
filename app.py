@@ -37,79 +37,80 @@ if menu == "Accueil":
     st.title("📊 Application CoinAfrique")
 
     # Phrase d'intro centrée
-    st.markdown("""
-    <p style="
-        text-align:center;
-        font-size:16px;
-        color:#475569;
-        margin-bottom:30px;
-    ">
-        Bienvenue sur l'application CoinAfrique ! Explorez, analysez et partagez vos avis facilement.
-    </p>
-    """, unsafe_allow_html=True)
+    st.title("📊 Application CoinAfrique")
 
-    # CSS pour les cartes
-    st.markdown("""
-    <style>
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-    }
-    .card {
-        flex: 1 1 220px;
-        border-radius: 12px;
-        padding: 25px;
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-        cursor: pointer;
-        color: #0F172A;
-        min-width: 200px;
-    }
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
-    }
-    .blue { background-color: #E0F2FE; }
-    .coral { background-color: #FECACA; }
-    .green { background-color: #DCFCE7; }
-    .lavender { background-color: #EDE9FE; }
-    .yellow { background-color: #FEF3C7; }
-    h3 { margin-bottom:10px; }
-    p { margin-top:0; font-size:14px; color:#475569; }
-    </style>
-    """, unsafe_allow_html=True)
+# Intro
+st.markdown("""
+<p style="
+    text-align:center;
+    font-size:16px;
+    color:#475569;
+    margin-bottom:30px;
+">
+    Bienvenue sur l'application CoinAfrique ! Explorez, analysez et partagez vos avis facilement.
+</p>
+""", unsafe_allow_html=True)
 
-    # Cartes HTML
-    st.markdown("""
-    <div class="card-container">
-        <div class="card blue">
-            <h3>📥 Visualiser les annonces</h3>
-            <p>Consultez les annonces collectées sur CoinAfrique facilement.</p>
-        </div>
+# CSS pour les cartes
+st.markdown("""
+<style>
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.card {
+    flex: 1 1 220px;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    color: #0F172A;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+}
+.blue { background-color: #E0F2FE; }
+.coral { background-color: #FECACA; }
+.green { background-color: #DCFCE7; }
+.lavender { background-color: #EDE9FE; }
+.yellow { background-color: #FEF3C7; }
+</style>
+""", unsafe_allow_html=True)
 
-        <div class="card yellow">
-            <h3>🧹 Scraper les données</h3>
-            <p>Récupérez automatiquement les annonces via BeautifulSoup.</p>
-        </div>
-
-        <div class="card green">
-            <h3>🧾 Télécharger les données</h3>
-            <p>Exportez les données brutes ou nettoyées en CSV.</p>
-        </div>
-
-        <div class="card coral">
-            <h3>📊 Analyser les prix</h3>
-            <p>Visualisez la répartition des prix et tendances par ville.</p>
-        </div>
-
-        <div class="card lavender">
-            <h3>📝 Évaluer l'application</h3>
-            <p>Partagez votre avis via KoboToolbox ou Google Forms.</p>
-        </div>
+# HTML pour les cartes
+st.markdown("""
+<div class="card-container">
+    <div class="card blue">
+        <h3>📥 Visualiser les annonces</h3>
+        <p>Consultez les annonces collectées sur CoinAfrique facilement.</p>
     </div>
-    """, unsafe_allow_html=True)
+
+    <div class="card yellow">
+        <h3>🧹 Scraper les données</h3>
+        <p>Récupérez automatiquement les annonces via BeautifulSoup.</p>
+    </div>
+
+    <div class="card green">
+        <h3>🧾 Télécharger les données</h3>
+        <p>Exportez les données brutes ou nettoyées en CSV.</p>
+    </div>
+
+    <div class="card coral">
+        <h3>📊 Analyser les prix</h3>
+        <p>Visualisez la répartition des prix et tendances par ville.</p>
+    </div>
+
+    <div class="card lavender">
+        <h3>📝 Évaluer l'application</h3>
+        <p>Partagez votre avis via KoboToolbox ou Google Forms.</p>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 
 
 
@@ -317,6 +318,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
