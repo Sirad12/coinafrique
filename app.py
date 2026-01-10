@@ -32,6 +32,9 @@ menu = st.sidebar.selectbox(
     ["Accueil", "Scraping", "Téléchargement brut", "Dashboard", "Évaluation"]
 )
 
+
+
+# ================= ACCUEIL =================
 if menu == "Accueil":
     st.title("Application CoinAfrique")
 
@@ -41,12 +44,12 @@ if menu == "Accueil":
     </p>
     """, unsafe_allow_html=True)
 
-    # Première ligne de cartes
-    col1, col2, col3 = st.columns(3)
+    # Première ligne
+    col1, col2, col3 = st.columns([1, 1, 1])
 
     with col1:
         st.markdown("""
-        <div style="background-color:#E0F2FE; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
+        <div style="background-color:#E0F2FE; border-radius:12px; padding:25px; margin-bottom:20px; text-align:center; color:#0F172A;">
             <h3>📥 Visualiser les annonces</h3>
             <p>Consultez les annonces collectées sur CoinAfrique facilement.</p>
         </div>
@@ -54,7 +57,7 @@ if menu == "Accueil":
 
     with col2:
         st.markdown("""
-        <div style="background-color:#FEF3C7; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
+        <div style="background-color:#FEF3C7; border-radius:12px; padding:25px; margin-bottom:20px; text-align:center; color:#0F172A;">
             <h3>🧹 Scraper les données</h3>
             <p>Récupérez automatiquement les annonces via BeautifulSoup.</p>
         </div>
@@ -62,18 +65,18 @@ if menu == "Accueil":
 
     with col3:
         st.markdown("""
-        <div style="background-color:#DCFCE7; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
+        <div style="background-color:#DCFCE7; border-radius:12px; padding:25px; margin-bottom:20px; text-align:center; color:#0F172A;">
             <h3>📄 Télécharger les données</h3>
             <p>Exportez les données brutes ou nettoyées en CSV.</p>
         </div>
         """, unsafe_allow_html=True)
 
-    # Deuxième ligne de cartes
-    col4, col5 = st.columns(2)
+    # Deuxième ligne
+    col4, col5 = st.columns([1, 1])
 
     with col4:
         st.markdown("""
-        <div style="background-color:#FECACA; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
+        <div style="background-color:#FECACA; border-radius:12px; padding:25px; margin-bottom:20px; text-align:center; color:#0F172A;">
             <h3>📊 Analyser les prix</h3>
             <p>Visualisez la répartition des prix et tendances par ville.</p>
         </div>
@@ -81,11 +84,12 @@ if menu == "Accueil":
 
     with col5:
         st.markdown("""
-        <div style="background-color:#EDE9FE; border-radius:12px; padding:20px; text-align:center; color:#0F172A;">
+        <div style="background-color:#EDE9FE; border-radius:12px; padding:25px; margin-bottom:20px; text-align:center; color:#0F172A;">
             <h3>📝 Évaluer l'application</h3>
             <p>Partagez votre avis via KoboToolbox ou Google Forms.</p>
         </div>
         """, unsafe_allow_html=True)
+
 
 
 
@@ -298,6 +302,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
