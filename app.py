@@ -109,13 +109,11 @@ elif menu == "Téléchargement brut":
 
 
 # 4. Données nettoyées 
-elif menu == "Données":
-    st.subheader("📄 Données nettoyées – aperçu")
-    df = pd.read_csv("data/coinafrique.csv")
-
-    st.write("Dimensions :", df.shape)
-    st.write("Colonnes :", list(df.columns))
-    st.dataframe(df)
+elif menu == "Données": 
+    df = pd.read_csv("data/coinafrique.csv") 
+    st.dataframe(df.head()) 
+    st.download_button("📥 Télécharger les données", df.to_csv(index=False).encode("utf-8"), 
+                       file_name="coinafrique.csv", mime="text/csv")
 
 # 5. Dashboard 
 elif menu == "Dashboard":
