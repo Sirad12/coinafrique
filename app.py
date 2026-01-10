@@ -37,7 +37,7 @@ if menu == "Accueil":
     st.title("Application CoinAfrique")
 
     st.markdown("""
-    ### Projet CoinAfrique – Collecte et analyse de données
+    ### Collecte et analyse de données
 
     Cette application permet :
     - Visualiser les annonces collectées sur CoinAfrique
@@ -244,6 +244,7 @@ elif menu == "Évaluation":
         <a href="https://ee.kobotoolbox.org/x/jfxd3Sgy" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire KoboToolbox </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
