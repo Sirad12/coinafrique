@@ -178,6 +178,10 @@ elif menu == "Scraping":
             mime="text/csv"
         )
 
+
+
+
+# ================= DONNEES =================
 elif menu == "Téléchargement brut":
     st.title("📦 Données brutes – Web Scraper")
 
@@ -189,48 +193,43 @@ elif menu == "Téléchargement brut":
     </p>
     """, unsafe_allow_html=True)
 
-    # Cartes avec liens (inline CSS)
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("""
-        <div style="background-color:#E0F2FE; border-radius:12px; padding:20px; margin-bottom:20px; text-align:center; color:#0F172A; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-            <a href="https://sn.coinafrique.com/categorie/vetements-homme" target="_blank" style="text-decoration:none; color:#0F172A;">
-                <h3>👕 Vêtements homme</h3>
+    # Cartes avec style inline (sans emojis)
+    st.markdown("""
+    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-bottom:20px;">
+
+        <div style="flex:1 1 200px; border-radius:12px; padding:20px; text-align:center; background-color:#E0F2FE; color:#0F172A; font-weight:500; transition:transform 0.2s, box-shadow 0.2s; cursor:pointer; min-width:180px;">
+            <a href="https://sn.coinafrique.com/categorie/vetements-homme" target="_blank" style="text-decoration:none; color:#0F172A; display:block; height:100%; width:100%;">
+                <h3>Vêtements homme</h3>
                 <p>Voir toutes les annonces pour les vêtements hommes</p>
             </a>
         </div>
-        """, unsafe_allow_html=True)
 
-        st.markdown("""
-        <div style="background-color:#E0F2FE; border-radius:12px; padding:20px; margin-bottom:20px; text-align:center; color:#0F172A; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-            <a href="https://sn.coinafrique.com/categorie/vetements-enfants" target="_blank" style="text-decoration:none; color:#0F172A;">
-                <h3>🧒 Vêtements enfants</h3>
-                <p>Voir toutes les annonces pour les vêtements enfants</p>
-            </a>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col2:
-        st.markdown("""
-        <div style="background-color:#E0F2FE; border-radius:12px; padding:20px; margin-bottom:20px; text-align:center; color:#0F172A; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-            <a href="https://sn.coinafrique.com/categorie/chaussures-homme" target="_blank" style="text-decoration:none; color:#0F172A;">
-                <h3>👞 Chaussures homme</h3>
+        <div style="flex:1 1 200px; border-radius:12px; padding:20px; text-align:center; background-color:#E0F2FE; color:#0F172A; font-weight:500; transition:transform 0.2s, box-shadow 0.2s; cursor:pointer; min-width:180px;">
+            <a href="https://sn.coinafrique.com/categorie/chaussures-homme" target="_blank" style="text-decoration:none; color:#0F172A; display:block; height:100%; width:100%;">
+                <h3>Chaussures homme</h3>
                 <p>Voir toutes les annonces pour les chaussures hommes</p>
             </a>
         </div>
-        """, unsafe_allow_html=True)
 
-        st.markdown("""
-        <div style="background-color:#E0F2FE; border-radius:12px; padding:20px; margin-bottom:20px; text-align:center; color:#0F172A; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-            <a href="https://sn.coinafrique.com/categorie/chaussures-enfants" target="_blank" style="text-decoration:none; color:#0F172A;">
-                <h3>👟 Chaussures enfants</h3>
+        <div style="flex:1 1 200px; border-radius:12px; padding:20px; text-align:center; background-color:#E0F2FE; color:#0F172A; font-weight:500; transition:transform 0.2s, box-shadow 0.2s; cursor:pointer; min-width:180px;">
+            <a href="https://sn.coinafrique.com/categorie/vetements-enfants" target="_blank" style="text-decoration:none; color:#0F172A; display:block; height:100%; width:100%;">
+                <h3>Vêtements enfants</h3>
+                <p>Voir toutes les annonces pour les vêtements enfants</p>
+            </a>
+        </div>
+
+        <div style="flex:1 1 200px; border-radius:12px; padding:20px; text-align:center; background-color:#E0F2FE; color:#0F172A; font-weight:500; transition:transform 0.2s, box-shadow 0.2s; cursor:pointer; min-width:180px;">
+            <a href="https://sn.coinafrique.com/categorie/chaussures-enfants" target="_blank" style="text-decoration:none; color:#0F172A; display:block; height:100%; width:100%;">
+                <h3>Chaussures enfants</h3>
                 <p>Voir toutes les annonces pour les chaussures enfants</p>
             </a>
         </div>
-        """, unsafe_allow_html=True)
+
+    </div>
+    """, unsafe_allow_html=True)
 
     # Bouton de téléchargement central
-    st.markdown("<div style='text-align:center; margin-top:30px;'>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center; margin-top:20px;'>", unsafe_allow_html=True)
     with open("data/coinafrique.csv", "rb") as f:
         st.download_button(
             label="📥 Télécharger le fichier brut complet",
@@ -240,6 +239,7 @@ elif menu == "Téléchargement brut":
             key="download_brut"
         )
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 
@@ -355,6 +355,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color:#1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
