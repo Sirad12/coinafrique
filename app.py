@@ -172,7 +172,7 @@ elif menu == "Scraping":
         st.dataframe(df)
 
         st.download_button(
-            "Télécharger le CSV",
+            "Télécharger le fichier CSV",
             df.to_csv(index=False).encode("utf-8"),
             file_name="coinafrique_scraped.csv",
             mime="text/csv"
@@ -384,6 +384,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
