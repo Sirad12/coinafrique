@@ -321,7 +321,7 @@ elif menu == "Dashboard":
         df,
         x="prix",
         nbins=30,
-        color_discrete_sequence=["COLOR_PRIX"],
+        color_discrete_sequence=[COLOR_PRIX],
         title=None
     )
     fig1.update_layout(bargap=0.2)
@@ -337,7 +337,7 @@ elif menu == "Dashboard":
         ville_counts,
         x="Ville",
         y="Nombre",
-        color_discrete_sequence=["COLOR_VILLES"],
+        color_discrete_sequence=[COLOR_VILLES],
         title=None
     )
     fig2.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
@@ -352,7 +352,7 @@ elif menu == "Dashboard":
         prix_ville,
         x="adresse",
         y="prix",
-        color_discrete_sequence=["COLOR_MOYEN"],
+        color_discrete_sequence=[COLOR_MOYEN],
         title=None
     )
     fig3.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
@@ -393,6 +393,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
