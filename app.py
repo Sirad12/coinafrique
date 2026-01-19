@@ -278,12 +278,10 @@ elif menu == "Téléchargement brut":
 
 # ================= DASHBOARD =================
 elif menu == "Dashboard":
-    st.title("Dashboard – Analyse des annonces")
+    st.title("Dashboard – Données nettoyées")
 
-    # Chargement des données
     df = pd.read_csv("data/coinafrique.csv")
 
-    # Nettoyage du prix
     df["prix"] = (
         df["prix"]
         .astype(str)
@@ -296,95 +294,63 @@ elif menu == "Dashboard":
     df = df[df["prix"] < 1_000_000]
     df = df[["titre", "prix", "adresse", "image"]].dropna()
 
-    # ================= FILTRES =================
-    st.subheader("🔎 Filtres")
+    st.subheader("Aperçu des annonces")
+    st.dataframe(df.head())
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-        villes = st.multiselect(
-            "Sélectionner une ou plusieurs villes",
-            options=df["adresse"].unique(),
-            default=df["adresse"].unique()
-        )
-
-    with col2:
-        prix_max = st.slider(
-            "Prix maximum (FCFA)",
-            min_value=0,
-            max_value=int(df["prix"].max()),
-            value=int(df["prix"].max())
-        )
-
-    df_filtre = df[
-        (df["adresse"].isin(villes)) &
-        (df["prix"] <= prix_max)
-    ]
-
-    # ================= INDICATEURS =================
-    st.subheader("📌 Indicateurs clés")
-
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Prix moyen", f"{df_filtre['prix'].mean():,.0f} FCFA")
-    c2.metric("Nombre d'annonces", len(df_filtre))
-    c3.metric("Villes couvertes", df_filtre["adresse"].nunique())
-
-    # ================= APERÇU =================
-    st.subheader("🗂 Aperçu des annonces")
-    st.dataframe(df_filtre.head(10), use_container_width=True)
-
-    # ================= TÉLÉCHARGEMENT =================
     st.download_button(
-        "📥 Télécharger les données filtrées",
-        df_filtre.to_csv(index=False).encode("utf-8"),
+        "Télécharger les données nettoyées",
+        df.to_csv(index=False).encode("utf-8"),
         file_name="coinafrique_nettoye.csv",
         mime="text/csv"
     )
 
-    # ================= GRAPHIQUES =================
-    st.subheader("📈 Analyses graphiques")
+    st.subheader("Indicateurs clés")
+    col1, col2, col3 = st.columns(3)
 
-    # Distribution des prix
+    col1.metric("Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
+    col2.metric("Nombre d'annonces", len(df))
+    col3.metric("Villes uniques", df["adresse"].nunique())
+
+    st.subheader("Distribution des prix")
     fig1 = px.histogram(
-        df_filtre,
+        df,
         x="prix",
         nbins=30,
-        title="Distribution des prix",
-        color_discrete_sequence=[COLOR_PRIX]
+        color_discrete_sequence=[COLOR_PRIX],
+        title="Distribution des prix"
     )
-    fig1.update_layout(bargap=0.15)
+    fig1.update_layout(bargap=0.2)
     fig1.update_traces(marker_line_width=0)
     st.plotly_chart(fig1, use_container_width=True)
 
-    # Annonces par ville
-    ville_counts = df_filtre["adresse"].value_counts().reset_index()
-    ville_counts.columns = ["Ville", "Nombre d'annonces"]
+    st.subheader("Nombre d'annonces par ville")
+    ville_counts = df["adresse"].value_counts().reset_index()
+    ville_counts.columns = ["Ville", "Nombre"]
 
     fig2 = px.bar(
         ville_counts,
         x="Ville",
-        y="Nombre d'annonces",
-        title="Nombre d'annonces par ville",
-        color_discrete_sequence=[COLOR_VILLES]
+        y="Nombre",
+        color_discrete_sequence=[COLOR_VILLES],
+        title="Annonces par ville"
     )
     fig2.update_layout(**PLOTLY_LAYOUT)
     fig2.update_traces(marker_line_width=0)
     st.plotly_chart(fig2, use_container_width=True)
 
-    # Prix moyen par ville
-    prix_ville = df_filtre.groupby("adresse")["prix"].mean().reset_index()
+    st.subheader("Prix moyen par ville")
+    prix_ville = df.groupby("adresse")["prix"].mean().reset_index()
 
     fig3 = px.bar(
         prix_ville,
         x="adresse",
         y="prix",
-        title="Prix moyen par ville",
-        color_discrete_sequence=[COLOR_MOYEN]
+        color_discrete_sequence=[COLOR_MOYEN],
+        title="Prix moyen par ville"
     )
     fig3.update_layout(**PLOTLY_LAYOUT)
     fig3.update_traces(marker_line_width=0)
     st.plotly_chart(fig3, use_container_width=True)
-
 
 
 
