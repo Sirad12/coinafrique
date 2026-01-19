@@ -275,55 +275,61 @@ elif menu == "Téléchargement brut":
 
 
 
-
 # ================= DASHBOARD =================
 elif menu == "Dashboard":
-    st.title("Dashboard – Données nettoyées")
+
+    st.markdown("""
+    <h1 style="color:#1E293B; font-size:32px;">📊 Dashboard – Données nettoyées</h1>
+    <p style="color:#475569; font-size:16px;">
+        Vue synthétique des prix et des annonces collectées.
+    </p>
+    """, unsafe_allow_html=True)
 
     df = pd.read_csv("data/coinafrique.csv")
 
     df["prix"] = (
-        df["prix"]
-        .astype(str)
+        df["prix"].astype(str)
         .str.replace("CFA", "")
         .str.replace(" ", "")
-        .str.strip()
     )
     df["prix"] = pd.to_numeric(df["prix"], errors="coerce")
-
     df = df[df["prix"] < 1_000_000]
     df = df[["titre", "prix", "adresse", "image"]].dropna()
 
-    st.subheader("Aperçu des annonces")
+    # --- Aperçu rapide ---
+    st.markdown("<h2 style='color:#1E40AF;'>🔍 Aperçu des annonces</h2>", unsafe_allow_html=True)
     st.dataframe(df.head())
 
     st.download_button(
-        "Télécharger les données nettoyées",
+        "📥 Télécharger les données nettoyées",
         df.to_csv(index=False).encode("utf-8"),
         file_name="coinafrique_nettoye.csv",
         mime="text/csv"
     )
 
-    st.subheader("Indicateurs clés")
+    # --- Indicateurs clés ---
+    st.markdown("<h2 style='color:#1E40AF;'>📌 Indicateurs clés</h2>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
 
-    col1.metric("Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
-    col2.metric("Nombre d'annonces", len(df))
-    col3.metric("Villes uniques", df["adresse"].nunique())
+    col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
+    col2.metric("📦 Nombre d'annonces", len(df))
+    col3.metric("📍 Villes uniques", df["adresse"].nunique())
 
-    st.subheader("Distribution des prix")
+    # --- Graphique 1 : Distribution des prix ---
+    st.markdown("<h2 style='color:#1E40AF;'>📊 Distribution des prix</h2>", unsafe_allow_html=True)
     fig1 = px.histogram(
         df,
         x="prix",
         nbins=30,
-        color_discrete_sequence=[COLOR_PRIX],
-        title="Distribution des prix"
+        color_discrete_sequence=["#F59E0B"],
+        title=None
     )
     fig1.update_layout(bargap=0.2)
     fig1.update_traces(marker_line_width=0)
     st.plotly_chart(fig1, use_container_width=True)
 
-    st.subheader("Nombre d'annonces par ville")
+    # --- Graphique 2 : Annonces par ville ---
+    st.markdown("<h2 style='color:#1E40AF;'>🗺️ Annonces par ville</h2>", unsafe_allow_html=True)
     ville_counts = df["adresse"].value_counts().reset_index()
     ville_counts.columns = ["Ville", "Nombre"]
 
@@ -331,24 +337,25 @@ elif menu == "Dashboard":
         ville_counts,
         x="Ville",
         y="Nombre",
-        color_discrete_sequence=[COLOR_VILLES],
-        title="Annonces par ville"
+        color_discrete_sequence=["#10B981"],
+        title=None
     )
-    fig2.update_layout(**PLOTLY_LAYOUT)
+    fig2.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
     fig2.update_traces(marker_line_width=0)
     st.plotly_chart(fig2, use_container_width=True)
 
-    st.subheader("Prix moyen par ville")
+    # --- Graphique 3 : Prix moyen par ville ---
+    st.markdown("<h2 style='color:#1E40AF;'>🧮 Prix moyen par ville</h2>", unsafe_allow_html=True)
     prix_ville = df.groupby("adresse")["prix"].mean().reset_index()
 
     fig3 = px.bar(
         prix_ville,
         x="adresse",
         y="prix",
-        color_discrete_sequence=[COLOR_MOYEN],
-        title="Prix moyen par ville"
+        color_discrete_sequence=["#8B5CF6"],
+        title=None
     )
-    fig3.update_layout(**PLOTLY_LAYOUT)
+    fig3.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
     fig3.update_traces(marker_line_width=0)
     st.plotly_chart(fig3, use_container_width=True)
 
@@ -386,6 +393,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
