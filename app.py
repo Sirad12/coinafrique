@@ -308,8 +308,11 @@ elif menu == "Dashboard":
     )
 
     # --- Indicateurs clés ---
-    st.markdown("<h2 style='color:#475569;'>Indicateurs clés</h2>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns(3)
+    st.markdown("""
+    <div style="background-color:#F1F5F9; padding:15px; border-radius:10px; margin-bottom:20px;">
+        <h2 style="color:#1E40AF;">📌 Indicateurs clés</h2>
+    </div>
+    """, unsafe_allow_html=True)
 
     col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
     col2.metric("📦 Nombre d'annonces", len(df))
@@ -321,7 +324,7 @@ elif menu == "Dashboard":
         df,
         x="prix",
         nbins=30,
-        color_discrete_sequence=["#F59E0B"],
+        color_discrete_sequence=["COLOR_PRIX"],
         title=None
     )
     fig1.update_layout(bargap=0.2)
@@ -337,7 +340,7 @@ elif menu == "Dashboard":
         ville_counts,
         x="Ville",
         y="Nombre",
-        color_discrete_sequence=["#10B981"],
+        color_discrete_sequence=["COLOR_VILLES"],
         title=None
     )
     fig2.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
@@ -352,7 +355,7 @@ elif menu == "Dashboard":
         prix_ville,
         x="adresse",
         y="prix",
-        color_discrete_sequence=["#8B5CF6"],
+        color_discrete_sequence=["COLOR_MOYEN"],
         title=None
     )
     fig3.update_layout(plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
@@ -393,6 +396,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
