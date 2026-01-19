@@ -311,16 +311,16 @@ elif menu == "Dashboard":
     st.markdown("<h2 style='color:#475569;'>📌 Indicateurs clés</h2>", unsafe_allow_html=True)
 
     with st.container():
-    col1, col2, col3 = st.columns(3)
+        col1, col2, col3 = st.columns(3)
 
-    with col1:
-        st.metric(label="💰 Prix moyen", value=f"{df['prix'].mean():,.0f} FCFA")
+        with col1:
+            st.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
 
-    with col2:
-        st.metric(label="📦 Nombre d'annonces", value=len(df))
+        with col2:
+            st.metric("📦 Nombre d'annonces", len(df))
 
-    with col3:
-        st.metric(label="📍 Villes uniques", value=df["adresse"].nunique())
+        with col3:
+            st.metric("📍 Villes uniques", df["adresse"].nunique())
 
     # --- Graphique 1 : Distribution des prix ---
     st.markdown("<h2 style='color:#475569;'>Distribution des prix</h2>", unsafe_allow_html=True)
@@ -400,6 +400,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
