@@ -279,7 +279,7 @@ elif menu == "Téléchargement brut":
 elif menu == "Dashboard":
 
     st.markdown("""
-    <h1 style="color:#1E293B; font-size:32px;">📊 Dashboard – Données nettoyées</h1>
+    <h1 style="color:#1E293B; font-size:32px;">Dashboard – Données nettoyées</h1>
     <p style="color:#475569; font-size:16px;">
         Vue synthétique des prix et des annonces collectées.
     </p>
@@ -297,18 +297,18 @@ elif menu == "Dashboard":
     df = df[["titre", "prix", "adresse", "image"]].dropna()
 
     # --- Aperçu rapide ---
-    st.markdown("<h2 style='color:#1E40AF;'>🔍 Aperçu des annonces</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#475569;'>Aperçu des annonces</h2>", unsafe_allow_html=True)
     st.dataframe(df.head())
 
     st.download_button(
-        "📥 Télécharger les données nettoyées",
+        "Télécharger les données nettoyées",
         df.to_csv(index=False).encode("utf-8"),
         file_name="coinafrique_nettoye.csv",
         mime="text/csv"
     )
 
     # --- Indicateurs clés ---
-    st.markdown("<h2 style='color:#1E40AF;'>📌 Indicateurs clés</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#475569;'>Indicateurs clés</h2>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
 
     col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
@@ -316,7 +316,7 @@ elif menu == "Dashboard":
     col3.metric("📍 Villes uniques", df["adresse"].nunique())
 
     # --- Graphique 1 : Distribution des prix ---
-    st.markdown("<h2 style='color:#475569;'>📊 Distribution des prix</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#475569;'>Distribution des prix</h2>", unsafe_allow_html=True)
     fig1 = px.histogram(
         df,
         x="prix",
@@ -329,7 +329,7 @@ elif menu == "Dashboard":
     st.plotly_chart(fig1, use_container_width=True)
 
     # --- Graphique 2 : Annonces par ville ---
-    st.markdown("<h2 style='color:#475569;'>🗺️ Annonces par ville</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#475569;'>Annonces par ville</h2>", unsafe_allow_html=True)
     ville_counts = df["adresse"].value_counts().reset_index()
     ville_counts.columns = ["Ville", "Nombre"]
 
@@ -345,7 +345,7 @@ elif menu == "Dashboard":
     st.plotly_chart(fig2, use_container_width=True)
 
     # --- Graphique 3 : Prix moyen par ville ---
-    st.markdown("<h2 style='color:#1E40AF;'>🧮 Prix moyen par ville</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#475569F;'>Prix moyen par ville</h2>", unsafe_allow_html=True)
     prix_ville = df.groupby("adresse")["prix"].mean().reset_index()
 
     fig3 = px.bar(
@@ -393,6 +393,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
