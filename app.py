@@ -308,12 +308,64 @@ elif menu == "Dashboard":
     )
 
     # --- Indicateurs clés ---
-    st.markdown("<h2 style='color:#475569;'>Indicateurs clés</h2>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns(3)
+st.markdown("<h2 style='color:#475569;'>Indicateurs clés</h2>", unsafe_allow_html=True)
 
-    col1.metric("💰 Prix moyen", f"{df['prix'].mean():,.0f} FCFA")
-    col2.metric("📦 Nombre d'annonces", len(df))
-    col3.metric("📍 Villes uniques", df["adresse"].nunique())
+# CSS pour les blocs
+st.markdown("""
+<style>
+.indicator-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.indicator-card {
+    flex: 0 0 200px;
+    min-width: 180px;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    background-color: #E0F2FE;
+    color: #0F172A;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.indicator-card h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #475569;
+}
+.indicator-card p {
+    margin: 5px 0 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0F172A;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# Bloc HTML avec les valeurs dynamiques
+prix_moyen = f"{df['prix'].mean():,.0f} FCFA"
+nb_annonces = len(df)
+nb_villes = df["adresse"].nunique()
+
+st.markdown(f"""
+<div class="indicator-row">
+    <div class="indicator-card">
+        <h3>Prix moyen</h3>
+        <p>{prix_moyen}</p>
+    </div>
+    <div class="indicator-card">
+        <h3>Nombre d'annonces</h3>
+        <p>{nb_annonces}</p>
+    </div>
+    <div class="indicator-card">
+        <h3>Villes uniques</h3>
+        <p>{nb_villes}</p>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 
     # --- Graphique 1 : Distribution des prix ---
     st.markdown("<h2 style='color:#475569;'>Distribution des prix</h2>", unsafe_allow_html=True)
@@ -393,6 +445,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
