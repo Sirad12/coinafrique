@@ -279,7 +279,7 @@ elif menu == "Téléchargement brut":
 elif menu == "Dashboard":
 
     st.markdown("""
-    <h1 style="color:#1E293B; font-size:32px;">Dashboard – Données nettoyées</h1>
+    st.title("Dashboard – Données nettoyées")
     <p style="color:#475569; font-size:16px;">
         Vue synthétique des prix et des annonces collectées.
     </p>
@@ -444,6 +444,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
