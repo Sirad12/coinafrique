@@ -172,7 +172,7 @@ elif menu == "Scraping":
         st.dataframe(df)
 
         st.download_button(
-            "Télécharger le fichier CSV",
+            " 📥 Télécharger le fichier CSV",
             df.to_csv(index=False).encode("utf-8"),
             file_name="coinafrique_scraped.csv",
             mime="text/csv"
@@ -261,7 +261,7 @@ elif menu == "Téléchargement brut":
     st.markdown("<div style='text-align:center; margin-top:20px;'>", unsafe_allow_html=True)
     with open("data/coinafrique.csv", "rb") as f:
         st.download_button(
-            label="Télécharger le fichier brut complet",
+            label=" 📥 Télécharger le fichier brut complet",
             data=f,
             file_name="coinafrique.csv",
             mime="text/csv",
@@ -301,7 +301,7 @@ elif menu == "Dashboard":
     st.dataframe(df.head())
 
     st.download_button(
-        "Télécharger les données nettoyées",
+        "📥 Télécharger les données nettoyées",
         df.to_csv(index=False).encode("utf-8"),
         file_name="coinafrique_nettoye.csv",
         mime="text/csv"
@@ -393,6 +393,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
