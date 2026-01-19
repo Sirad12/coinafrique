@@ -308,7 +308,6 @@ elif menu == "Dashboard":
     )
 
     # --- Indicateurs clés ---
-    st.markdown("""
     st.markdown("<h2 style='color:#475569;'>📌 Indicateurs clés</h2>", unsafe_allow_html=True)
 
     with st.container():
@@ -401,6 +400,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
