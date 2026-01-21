@@ -141,22 +141,14 @@ elif menu == "Scraping":
 
             for c in containers:
                 try:
-                    titre = c.find(
-                        "p", class_="ad__card-description"
-                    ).text.strip()
+                    titre = c.find("p", class_="ad__card-description").text.strip()
 
-                    prix = c.find(
-                        "p", class_="ad__card-price"
-                    ).text.replace("CFA", "").replace(" ", "").strip()
+                    prix = c.find("p", class_="ad__card-price").text.replace("CFA", "").replace(" ", "").strip()
                     prix = int(prix)
 
-                    adresse = c.find(
-                        "p", class_="ad__card-location"
-                    ).span.text.strip()
+                    adresse = c.find("p", class_="ad__card-location").span.text.strip()
 
-                    image = c.find(
-                        "img", class_="ad__card-img"
-                    )["src"]
+                    image = c.find("img", class_="ad__card-img")["src"]
 
                     data.append({
                         "titre": titre,
@@ -446,6 +438,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
