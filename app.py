@@ -11,6 +11,22 @@ st.set_page_config(
 )
 
 
+COLOR_PRIX = "#F4A7B9"       # rose
+COLOR_VILLES = "#000080"     # bleu marine
+COLOR_MOYEN = "#A8D5BA"      # vert menthe
+
+
+PLOTLY_LAYOUT = dict(
+    plot_bgcolor="rgba(0,0,0,0)",
+    paper_bgcolor="rgba(0,0,0,0)",
+    font=dict(color="#0F172A", size=14),
+    title=dict(
+        font=dict(size=18, color="#0F172A"),
+        x=0.02
+    ),
+    margin=dict(l=40, r=40, t=60, b=40)
+)
+
 
 # ---------------- SIDEBAR ----------------
 menu = st.sidebar.selectbox(
@@ -261,23 +277,7 @@ elif menu == "Téléchargement brut":
 
 
 
-# ================= DASHBOARD =================
-COLOR_PRIX = "#F4A7B9"       # rose
-COLOR_VILLES = "#000080"     # bleu marine
-COLOR_MOYEN = "#A8D5BA"      # vert menthe
-
-
-PLOTLY_LAYOUT = dict(
-    plot_bgcolor="rgba(0,0,0,0)",
-    paper_bgcolor="rgba(0,0,0,0)",
-    font=dict(color="#0F172A", size=14),
-    title=dict(
-        font=dict(size=18, color="#0F172A"),
-        x=0.02
-    ),
-    margin=dict(l=40, r=40, t=60, b=40)
-)
-
+# ================= DASHBOARD ================
 elif menu == "Dashboard":
     st.title("Dashboard – Données nettoyées")
     
@@ -446,6 +446,7 @@ elif menu == "Évaluation":
         <a href="https://forms.gle/SE3yPxVg8Zu8FwHp9" target="_blank" style="font-size:16px; font-weight:bold; color: #1E3A8A"> 
           Accéder au formulaire google </a> 
         </div> """, unsafe_allow_html=True)
+
 
 
 
